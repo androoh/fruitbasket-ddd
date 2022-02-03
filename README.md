@@ -3,6 +3,7 @@
 In order to run the application, please run the following commands:
 
 ```bash
+composer install
 make init
 make schema-update
 
