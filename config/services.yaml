@@ -13,12 +13,15 @@ services:
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
+    FruitBasket\:
         resource: '../src/'
         exclude:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
+    FruitBasket\Infrastructure\Service\BasketService: ~
+    FruitBasket\Infrastructure\EventListener\DomainExceptionListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
